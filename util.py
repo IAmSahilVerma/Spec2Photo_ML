@@ -7,13 +7,13 @@ from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
 
 
 def save_model(model, model_version, model_name='spec_photo_model'):
-    os.makedirs(f'models/{model_version}', exist_ok=True)
-    model.save(f'models/{model_version}/{model_name}.h5')
+    os.makedirs(f'../models/{model_version}', exist_ok=True)
+    model.save(f'../models/{model_version}/{model_name}.h5')
     
 def save_history(history, model_version, history_name='history'):
-    os.makedirs(f'history/{model_version}', exist_ok=True)
+    os.makedirs(f'../history/{model_version}', exist_ok=True)
 
-    history_path = os.path.join(f'history/{model_version}', f'{history_name}.json')
+    history_path = os.path.join(f'../history/{model_version}', f'{history_name}.json')
     with open(history_path, 'w') as f:
         json.dump(history.history, f)
         
