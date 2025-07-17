@@ -1,0 +1,29 @@
+{
+    "spectro_cols": [
+        "h_alpha_flux",
+        "oiii_5007_flux",
+        "nii_6584_flux",
+        "sii_6717_flux",
+        "lick_mgb",
+        "lick_fe5335",
+        "d4000",
+        "velocityDisp"
+    ],
+    "photometry_cols": [
+        "modelMag_u",
+        "modelMag_r",
+        "modelMag_z",
+        "fracDev_r",
+        "petroRad_r",
+        "extinction_u",
+        "extinction_r",
+        "extinction_z"
+    ],
+    "generic_cols": [
+        "z",
+        "zErr"
+    ],
+    "target_col": [
+        "logM_star"
+    ]
+}
