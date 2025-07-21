@@ -44,15 +44,23 @@ def load_history(model_version, history_name='history'):
     else:
         raise FileNotFoundError(f"History file {history_path} does not exist.")
 
-def plot_metrics(y_test, y_pred):
+def plot_metrics(y_test, y_pred, threshold=0.2):
     mae = mean_absolute_error(y_test, y_pred)
-    r2 = r2_score(y_test, y_pred)
     rmse = np.sqrt(mean_squared_error(y_test, y_pred))
+    r2 = r2_score(y_test, y_pred)
     
-    print(f"Evaluation Metrics:")
-    print(f"Mean Absolute Error (MAE): {mae:.4f}")
-    print(f"Root Mean Squared Error (RMSE): {rmse:.4f}")
+    # Dex accuracy metrics (since inputs are already in log space)
+    mae_dex = mae  # identical unless you're converting from linear scale
+    rmse_dex = rmse
+
+    # Fraction of predictions within ±threshold dex
+    within_tolerance = np.mean(np.abs(y_pred - y_test) <= threshold)
+
+    print(f"📊 Evaluation Metrics:")
+    print(f"Mean Absolute Error (MAE): {mae_dex:.4f} dex")
+    print(f"Root Mean Squared Error (RMSE): {rmse_dex:.4f} dex")
     print(f"R² Score: {r2:.4f}")
+    print(f"Fraction within ±{threshold:.2f} dex: {within_tolerance:.2%}")
 
 def plot_visualizations(y_test, y_pred, z_values=None, history=None):
     y_pred_flat = y_pred.ravel()
