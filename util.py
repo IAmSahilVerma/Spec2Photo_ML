@@ -63,8 +63,14 @@ def plot_metrics(y_test, y_pred, threshold=0.2):
     print(f"Fraction within ±{threshold:.2f} dex: {within_tolerance:.2%}")
 
 def plot_visualizations(y_test, y_pred, z_values=None, history=None):
-    y_pred_flat = y_pred.ravel()
-    y_test_flat = y_test.iloc[:, 0].values.ravel()
+    y_pred_flat = y_pred.ravel() if y_pred.ndim > 1 else y_pred
+
+    if hasattr(y_test, 'iloc') and isinstance(y_test, pd.DataFrame):
+        y_test_array = y_test.iloc[:, 0].values
+    else:
+        y_test_array = np.array(y_test)
+
+    y_test_flat = y_test_array.ravel() if y_test_array.ndim > 1 else y_test_array
     residuals = y_test_flat - y_pred_flat
 
     # Residual Plot
