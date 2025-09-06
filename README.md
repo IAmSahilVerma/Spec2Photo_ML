@@ -16,3 +16,8 @@
 ### 3️⃣ Photometric-Only Model (With Transfer Learning)  
 - **Model Name:** `photo_only_model`  
 - **History Name:** `history_photo_only`
+
+---
+
+# :page_with_curl: Scientific Report
+[Streamlining Galaxy Stellar Mass Calculations.pdf](https://github.com/user-attachments/files/22188538/Streamlining.Galaxy.Stellar.Mass.Calculations.pdf)
